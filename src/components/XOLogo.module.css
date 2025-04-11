@@ -1,0 +1,10 @@
+.X {
+  font-size: 35px;
+  color: var(--primary-blue);
+  position: relative;
+}
+
+.O {
+  font-size: 35px;
+  color: var(--primary-orange);
+}

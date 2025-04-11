@@ -1,0 +1,57 @@
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* Variables */
+  --primary-blue: #008aff;
+  --primary-azure: #38a3ff;
+  --primary-orange: #ffaa00;
+  --primary-white: #fff;
+  --primary-bg-color: #0c2233;
+  --secondary-bg-color: #0e2c42;
+  --third-bg-color: #091a27;
+
+  --input-placeholder: #325471;
+  --special-color: #d6ecff;
+
+  /* Typography */
+
+  font-family: 'Chakra Petch', sans-serif;
+  --ff-medium: 500;
+  --ff-bold: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 2.5px;
+  font-weight: var(--ff-bold);
+}
+
+h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 1.5px;
+  font-weight: var(--ff-bold);
+}
+
+h3 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: var(--ff-bold);
+}
+
+body {
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  font-weight: var(--ff-medium);
+  background-color: var(--primary-bg-color);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
