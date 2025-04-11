@@ -1,6 +1,19 @@
-.button {
+.customButton {
   font-size: 20px;
-  line-height: auto;
   letter-spacing: 1.25px;
   font-weight: var(--ff-bold);
+  color: var(--primary-white);
+  border-radius: 15px;
+  background-color: var(--primary-blue);
+  padding: 0 35px;
+  height: 67px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0 0 0 / 0.25);
+}
+
+.customButton:hover {
+  background-color: var(--primary-azure);
 }

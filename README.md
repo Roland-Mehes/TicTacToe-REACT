@@ -39,7 +39,7 @@ _(This will be updated once the app is deployed to Vercel or Netlify)_
 ## 📦 Getting Started (Development)
 
 ```bash
-git clone https://github.com/your-username/tic-tac-toe.git
+git clone https://github.com/Roland-Mehes/TicTacToe-REACT.git
 cd tic-tac-toe
 npm install
 npm run dev
