@@ -40,7 +40,7 @@ _(This will be updated once the app is deployed to Vercel or Netlify)_
 
 ```bash
 git clone https://github.com/Roland-Mehes/TicTacToe-REACT.git
-cd tic-tac-toe
+cd TicTacToe-REACT
 npm install
 npm run dev
 ```
