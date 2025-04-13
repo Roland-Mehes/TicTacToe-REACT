@@ -1,0 +1,5 @@
+.mainContainer {
+  width: 460px;
+  display: grid;
+  gap: 30px;
+}

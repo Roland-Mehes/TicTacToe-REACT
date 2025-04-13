@@ -41,6 +41,7 @@ h3 {
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: var(--ff-bold);
+  color: var(--special-color);
 }
 
 body {
