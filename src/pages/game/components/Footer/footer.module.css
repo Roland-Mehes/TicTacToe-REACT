@@ -1,0 +1,40 @@
+.mainContainer {
+  display: grid;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.scoreContainer {
+  display: flex;
+  gap: 15px;
+}
+
+.firstPlayer,
+.secondPlayer {
+  padding: 10px 15px;
+  border-radius: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-wrap: nowrap;
+}
+
+.firstPlayer {
+  background-color: var(--primary-blue);
+}
+
+.secondPlayer {
+  background-color: var(--primary-orange);
+}
+
+.tieContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--secondary-bg-color);
+  padding: 10px 0px;
+  gap: 10px;
+}

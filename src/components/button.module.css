@@ -3,6 +3,7 @@
   letter-spacing: 1.25px;
   font-weight: var(--ff-bold);
   color: var(--primary-white);
+  border: none;
   border-radius: 15px;
   background-color: var(--primary-blue);
   padding: 0 35px;
@@ -11,7 +12,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 4px rgba(0 0 0 / 0.25);
+  box-shadow: 0 5px 0 0 var(--third-bg-color);
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 .customButton:hover {

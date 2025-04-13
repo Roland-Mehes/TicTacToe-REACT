@@ -41,9 +41,11 @@ h3 {
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: var(--ff-bold);
+  color: var(--special-color);
 }
 
 body {
+  color: var(--special-color);
   font-size: 16px;
   letter-spacing: 0.8px;
   font-weight: var(--ff-medium);
@@ -54,4 +56,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+a {
+  text-decoration: none;
 }
