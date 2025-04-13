@@ -9,7 +9,6 @@ const MarkerSwitcher = () => {
   const handleActiveButton = (marker) => {
     setActiveButton(marker);
   };
-  console.log('render is :' + activeButton);
 
   return (
     <div className={styles.mainContainer}>

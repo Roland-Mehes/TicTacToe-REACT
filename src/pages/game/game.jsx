@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './game.module.css';
-import Board from './components/Board';
-import GameHeader from './components/gameHeader';
+import Board from './components/Board/Board';
+import GameHeader from './components/GameHeader/gameHeader';
+import Footer from './components/Footer/Footer';
 
 const Game = () => {
   return (
@@ -10,7 +11,7 @@ const Game = () => {
         <GameHeader></GameHeader>
       </div>
       <Board></Board>
-      <h3>Footer</h3>
+      <Footer />
     </div>
   );
 };

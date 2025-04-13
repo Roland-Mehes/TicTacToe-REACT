@@ -1,7 +1,7 @@
 import React from 'react';
-import X from '../../../assets/X';
-import O from '../../../assets/O';
-import Restart from '../../../assets/Restart';
+import X from '../../../../assets/X';
+import O from '../../../../assets/O';
+import Restart from '../../../../assets/Restart';
 import styles from './gameHeader.module.css';
 
 const GameHeader = () => {
