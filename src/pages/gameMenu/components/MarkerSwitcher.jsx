@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
 import styles from './markerSwitcher.module.css';
-import X from '../assets/X';
-import O from '../assets/O';
+import X from '../../../assets/X';
+import O from '../../../assets/O';
+import { useGameContext } from '../../../Context/GameContext';
 
 const MarkerSwitcher = () => {
-  const [activeButton, setActiveButton] = useState('O');
+  const { aPlayerMarker, setAPlayerMarker } = useGameContext();
 
   const handleActiveButton = (marker) => {
-    setActiveButton(marker);
+    setAPlayerMarker(marker);
   };
 
   return (
     <div className={styles.mainContainer}>
-      <h3>PICK YOUR MARK AS PLAYER</h3>
+      <h3>PICK YOUR MARK AS PLAYER </h3>
       <div className={styles.toggle}>
         <div
           className={`${styles.XButton} ${
-            activeButton === 'X' ? styles.active : styles.inactive
-          }`}
+            aPlayerMarker === 'X' ? styles.active : styles.inactive
+          } `}
           onClick={() => handleActiveButton('X')}
         >
           <X
             width="30px"
             height="30px"
-            fill={activeButton === 'X' ? '#0C2233' : ''}
+            fill={aPlayerMarker === 'X' ? '#0C2233' : ''}
           />
         </div>
         <div
           className={`${styles.OButton} ${
-            activeButton === 'O' ? styles.active : styles.inactive
+            aPlayerMarker === 'O' ? styles.active : styles.inactive
           }`}
           onClick={() => handleActiveButton('O')}
         >
           <O
             width="30px"
             height="30px"
-            fill={activeButton === 'X' ? '' : '#0C2233'}
+            fill={aPlayerMarker === 'X' ? '' : '#0C2233'}
           />
         </div>
       </div>

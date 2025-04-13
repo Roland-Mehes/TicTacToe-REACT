@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './gameMenu.module.css';
 import XOLogo from '../../components/XOLogo';
 import Button from '../../components/Button';
-import MarkerSwitcher from '../../components/MarkerSwitcher';
+import MarkerSwitcher from './components/MarkerSwitcher';
 
 const GameMenu = () => {
   const location = useLocation();
@@ -17,11 +17,19 @@ const GameMenu = () => {
     }
   }, [userName, navigate]);
 
+  const handleOnClick = () => {
+    if (!userName) {
+      return null;
+    } else {
+      navigate(`/tic-tac-toe`, { state: { userName } });
+    }
+  };
+
   return (
     <div className={styles.mainContainer}>
       <XOLogo></XOLogo>
       <MarkerSwitcher></MarkerSwitcher>
-      <Button>NEW GAME (VS CPU)</Button>
+      <Button onClick={handleOnClick}>NEW GAME (VS CPU)</Button>
     </div>
   );
 };

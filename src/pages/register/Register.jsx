@@ -1,13 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './register.module.css';
 import XOLogo from '../../components/XOLogo';
 import CustomForm from '../../components/CustomForm';
 import Button from '../../components/Button';
+import { useGameContext } from '../../Context/GameContext';
 
 const Register = () => {
-  const [userName, setUserName] = useState('');
+  const { userName, setUserName } = useGameContext();
   const navigate = useNavigate();
 
   const handleUserNameChange = (name) => {

@@ -3,6 +3,8 @@ import X from '../../../../assets/X';
 import O from '../../../../assets/O';
 import { useGameContext } from '../../../../Context/GameContext';
 
+// currentPlayer = the player who has to place marker
+
 const Board = () => {
   const {
     boardCells,

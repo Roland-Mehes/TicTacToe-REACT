@@ -1,22 +1,24 @@
 import React from 'react';
 import styles from './footer.module.css';
-import X from '../../../../assets/X';
-import O from '../../../../assets/O';
+import { useGameContext } from '../../../../Context/GameContext';
 
 const Footer = () => {
+  const { userName, aPlayerScore, bPlayerScore, tieMatchNumber } =
+    useGameContext();
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.scoreContainer}>
         <div className={styles.firstPlayer}>
-          X (ALEX VISINESCU) <h2>10</h2>
+          X ({userName}) <h2>{aPlayerScore}</h2>
         </div>
         <div className={styles.secondPlayer}>
-          O (CPU) <h2>3</h2>
+          O (CPU) <h2>{bPlayerScore}</h2>
         </div>
       </div>
 
       <div className={styles.tieContainer}>
-        TIES <h2>2</h2>
+        TIES <h2>{tieMatchNumber}</h2>
       </div>
     </div>
   );
