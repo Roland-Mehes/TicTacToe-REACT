@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './gameMenu.module.css';
+import XOLogo from '../../components/XOLogo';
+import Button from '../../components/Button';
+import MarkerSwitcher from '../../components/MarkerSwitcher';
 
 const GameMenu = () => {
   const location = useLocation();
@@ -15,7 +18,11 @@ const GameMenu = () => {
   }, [userName, navigate]);
 
   return (
-    <div className={styles.mainContainer}>Wellcome in GameMenu {userName}</div>
+    <div className={styles.mainContainer}>
+      <XOLogo></XOLogo>
+      <MarkerSwitcher></MarkerSwitcher>
+      <Button>NEW GAME (VS CPU)</Button>
+    </div>
   );
 };
 

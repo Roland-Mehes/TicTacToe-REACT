@@ -1,6 +1,13 @@
 import styles from './CustomForm.module.css';
 
-const CustomForm = ({ userName, onUserNameChange }) => {
+const CustomForm = ({ userName, onUserNameChange, onSubmit }) => {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      onSubmit();
+    }
+  };
+
   return (
     <div className={styles.mainContainer}>
       <form onSubmit={(e) => e.preventDefault()} className={styles.customForm}>
@@ -11,6 +18,7 @@ const CustomForm = ({ userName, onUserNameChange }) => {
           placeholder="NAME"
           value={userName || ''}
           onChange={(e) => onUserNameChange(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
       </form>
     </div>

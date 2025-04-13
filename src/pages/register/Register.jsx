@@ -28,6 +28,7 @@ const Register = () => {
       <CustomForm
         userName={userName}
         onUserNameChange={handleUserNameChange}
+        onSubmit={handleSubmit}
       ></CustomForm>
 
       <Button onClick={handleSubmit}>LET'S START</Button>

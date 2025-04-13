@@ -8,7 +8,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route index element={<Register />} />
           <Route path="gameMenu" element={<GameMenu />} />
         </Routes>
       </Router>
