@@ -13,14 +13,14 @@ _(This will be updated once the app is deployed to Vercel or Netlify)_
 - ⏳ 3x3 game board with live updates
 - ⏳ Player vs CPU mode with alternating turns
 - ⏳ Player vs Player mode (coming soon)
-- ⏳ Displays the current player's turn
+- ✅ Displays the current player's turn
 - ⏳ Win/lose/tie detection
 - ⏳ Restart button with confirmation modal
 - ⏳ End-game modal for win/lose/tie
 - ⏳ Counters for wins (X and O) and total ties
-- ⏳ Blocks clicks on filled cells or after game ends
+- ✅ Blocks clicks on filled cells or after game ends
 - ⏳ CPU move delay using `setTimeout`
-- ⏳ Register form with basic input validation (in progress)
+- ✅ Register form with basic input validation (in progress)
 
 ## 🧠 Technical Tips Implemented
 

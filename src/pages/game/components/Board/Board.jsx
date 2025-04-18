@@ -2,6 +2,8 @@ import styles from './board.module.css';
 import X from '../../../../assets/X';
 import O from '../../../../assets/O';
 import { useGameContext } from '../../../../Context/GameContext';
+import { useEffect } from 'react';
+import { winningCombinations } from '../../utils/winningCombinations';
 
 // currentPlayer = the player who has to place marker
 
@@ -12,9 +14,26 @@ const Board = () => {
     currentPlayer,
     setCurrentPlayer,
     isWinner,
-    // setIsWinner,
+    setIsWinner,
   } = useGameContext();
 
+  // WIN CONDITION CHECK
+  useEffect(() => {
+    for (let combo of winningCombinations) {
+      const [a, b, c] = combo;
+      if (
+        boardCells[a] &&
+        boardCells[a] === boardCells[b] &&
+        boardCells[a] === boardCells[c]
+      ) {
+        setIsWinner(true);
+
+        console.log('Winner : ' + boardCells[a]);
+      }
+    }
+  }, [boardCells]);
+
+  // BOARD CONTROLS
   const handleClick = (e) => {
     const newBoard = [...boardCells];
 
@@ -22,22 +41,20 @@ const Board = () => {
     if (isWinner || boardCells[e] !== null) return;
 
     // Adding content in cells basaed on currentPlayer
-    if (currentPlayer === 'X') {
-      newBoard[e] = <X width={'79px'} height={'79px'} fill={'#008AFF'} />;
-      setBoardCells(newBoard);
-      setCurrentPlayer('O');
-    } else if (currentPlayer === 'O') {
-      newBoard[e] = <O width={'79px'} height={'79px'} fill={'#FFAA00'} />;
-      setBoardCells(newBoard);
-      setCurrentPlayer('X');
-    }
+    newBoard[e] = currentPlayer;
+    setBoardCells(newBoard);
+    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
   };
 
   return (
     <div className={styles.cellContainer}>
       {boardCells.map((cell, idx) => (
         <div onClick={() => handleClick(idx)} className={styles.cell} key={idx}>
-          {cell}
+          {cell === 'X' ? (
+            <X width={'79px'} height={'79px'} fill={'#008AFF'} />
+          ) : cell === 'O' ? (
+            <O width={'79px'} height={'79px'} fill={'#FFAA00'} />
+          ) : null}
         </div>
       ))}
     </div>

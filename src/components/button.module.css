@@ -3,19 +3,44 @@
   letter-spacing: 1.25px;
   font-weight: var(--ff-bold);
   color: var(--primary-white);
+
   border: none;
   border-radius: 15px;
   background-color: var(--primary-blue);
   padding: 0 35px;
   height: 67px;
+
   display: grid;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   box-shadow: 0 5px 0 0 var(--third-bg-color);
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: var(--ff-main);
 }
 
 .customButton:hover {
   background-color: var(--primary-azure);
+}
+
+.custonModalButton {
+  display: grid;
+  align-content: center;
+
+  height: 52px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: var(--primary-blue);
+  border: none;
+  border-bottom: 3px solid var(--third-bg-color);
+
+  font-family: var(--ff-main);
+  color: var(--primary-white);
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: var(--ff-medium);
+
+  cursor: pointer;
+}
+
+.custonModalButton:hover {
+  background-color: #b8deff;
 }

@@ -16,10 +16,11 @@
   --special-color: #d6ecff;
 
   /* Typography */
-
-  font-family: 'Chakra Petch', sans-serif;
+  --ff-main: 'Chakra Petch', sans-serif;
   --ff-medium: 500;
   --ff-bold: 700;
+
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 h1 {

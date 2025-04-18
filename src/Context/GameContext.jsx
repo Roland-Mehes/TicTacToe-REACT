@@ -40,4 +40,5 @@ export const GameProvider = ({ children }) => {
 };
 
 // Custom hook, to extract the data easy
+// eslint-disable-next-line react-refresh/only-export-components
 export const useGameContext = () => useContext(GameContext);
