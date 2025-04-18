@@ -21,7 +21,7 @@
   background-color: var(--primary-azure);
 }
 
-.custonModalButton {
+.customModalButton {
   display: grid;
   align-content: center;
 
@@ -36,11 +36,35 @@
   color: var(--primary-white);
   font-size: 16px;
   letter-spacing: 1px;
-  font-weight: var(--ff-medium);
+  font-weight: var(--ff-bold);
 
   cursor: pointer;
 }
 
-.custonModalButton:hover {
+.customModalButton:hover {
+  background-color: #38a3ff;
+}
+
+.quitModalButton {
+  display: grid;
+  align-content: center;
+
+  height: 52px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: var(--special-color);
+  border: none;
+  border-bottom: 3px solid var(--third-bg-color);
+
+  font-family: var(--ff-main);
+  color: var(--third-bg-color);
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: var(--ff-bold);
+
+  cursor: pointer;
+}
+
+.quitModalButton:hover {
   background-color: #b8deff;
 }

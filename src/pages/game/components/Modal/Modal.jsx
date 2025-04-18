@@ -1,29 +1,36 @@
 import React from 'react';
 import styles from './Modal.module.css';
 import Button from '../../../../components/Button';
+import X from '../../../../assets/X';
 
 const Modal = ({
-  // title,
-  // subtitle,
-  // confirmText,
-  // cancelText,
+  title,
+  subtitle,
+  confirmText,
+  cancelText,
   onConfirm,
   onCancel,
+  SvgComponent,
+  svgColor,
 }) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.modal}>
-        <h3>Are you sure?</h3>
+        <h3>{title}</h3>
+
         <div className={styles.subtitle}>
-          <h1>RESTART GAME</h1>
+          {SvgComponent && (
+            <SvgComponent width={'49px'} height={'49px'} fill={svgColor} />
+          )}
+          <h1 style={{ color: svgColor }}>{subtitle}</h1>
         </div>
 
         <div className={styles.buttonContainer}>
-          <Button modalButton={true} onClick={onCancel}>
-            NO, CANCEL
+          <Button quitModalButton={true} onClick={onCancel}>
+            {cancelText}
           </Button>
           <Button modalButton={true} onClick={onConfirm}>
-            YES, RESTART
+            {confirmText}
           </Button>
         </div>
       </div>

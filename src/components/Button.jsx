@@ -1,12 +1,19 @@
 import React from 'react';
 import styles from './button.module.css';
 
-const Button = ({ children, onClick, modalButton }) => {
+const Button = ({ children, onClick, modalButton, quitModalButton }) => {
+  let buttonClass = styles.customButton;
+
+  if (modalButton) {
+    buttonClass = styles.customModalButton;
+  }
+
+  if (quitModalButton) {
+    buttonClass = styles.quitModalButton;
+  }
+
   return (
-    <button
-      onClick={onClick}
-      className={modalButton ? styles.custonModalButton : styles.customButton}
-    >
+    <button onClick={onClick} className={buttonClass}>
       {children}
     </button>
   );

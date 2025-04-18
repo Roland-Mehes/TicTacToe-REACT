@@ -4,19 +4,18 @@ This is a simple **Tic Tac Toe game** built with React and Vite. The project is 
 
 ## 🚀 Live Demo
 
-👉 [View Live Demo]()  
-_(This will be updated once the app is deployed to Vercel or Netlify)_
+👉 [View Live Demo](https://tic-tac-toe-react-lyart-psi.vercel.app/)
 
 ## 📌 Features (in progress)
 
 - ✅ Planning :)
-- ⏳ 3x3 game board with live updates
+- ✅ 3x3 game board with live updates
 - ⏳ Player vs CPU mode with alternating turns
 - ⏳ Player vs Player mode (coming soon)
 - ✅ Displays the current player's turn
 - ⏳ Win/lose/tie detection
-- ⏳ Restart button with confirmation modal
-- ⏳ End-game modal for win/lose/tie
+- ✅ Restart button with confirmation modal
+- ✅ End-game modal for win/lose/tie
 - ⏳ Counters for wins (X and O) and total ties
 - ✅ Blocks clicks on filled cells or after game ends
 - ⏳ CPU move delay using `setTimeout`

@@ -29,8 +29,11 @@
 }
 
 .subtitle {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  gap: 15px;
+  justify-items: center;
+  text-align: center;
+  text-wrap: nowrap;
 }
 
 .buttonContainer {

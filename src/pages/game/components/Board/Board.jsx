@@ -7,7 +7,7 @@ import { winningCombinations } from '../../utils/winningCombinations';
 
 // currentPlayer = the player who has to place marker
 
-const Board = () => {
+const Board = ({ setIsModalOpen }) => {
   const {
     boardCells,
     setBoardCells,
@@ -15,6 +15,7 @@ const Board = () => {
     setCurrentPlayer,
     isWinner,
     setIsWinner,
+    aPlayerMarker,
   } = useGameContext();
 
   // WIN CONDITION CHECK
@@ -26,12 +27,21 @@ const Board = () => {
         boardCells[a] === boardCells[b] &&
         boardCells[a] === boardCells[c]
       ) {
-        setIsWinner(true);
+        // IF THERE IS A WINNER
+        let winner = boardCells[a];
+        setIsWinner(winner);
 
-        console.log('Winner : ' + boardCells[a]);
+        // Check if the winner is the same as the player's marker
+        if (winner === aPlayerMarker) {
+          setIsModalOpen('win'); // Player wins
+        } else {
+          setIsModalOpen('lose'); // Player loses
+        }
       }
     }
-  }, [boardCells]);
+    console.log('The Player Marker is : ', aPlayerMarker);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boardCells, aPlayerMarker, setIsWinner]);
 
   // BOARD CONTROLS
   const handleClick = (e) => {

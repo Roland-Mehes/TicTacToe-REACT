@@ -9,7 +9,7 @@ const GameHeader = ({ setIsModalOpen }) => {
   const { currentPlayer } = useGameContext();
 
   const handleOnClick = () => {
-    setIsModalOpen(true);
+    setIsModalOpen('restart');
   };
 
   return (

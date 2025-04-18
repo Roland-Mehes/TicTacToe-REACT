@@ -4,14 +4,14 @@ const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
   // I Could make here an Object inside one useState to prevent duplication , but i will imporive it later. Now its better for me to debug :)
-  const [currentPlayer, setCurrentPlayer] = useState('X');
-  const [boardCells, setBoardCells] = useState(Array(9).fill(null));
-  const [isWinner, setIsWinner] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [aPlayerMarker, setAPlayerMarker] = useState('O');
-  const [aPlayerScore, setAplayerScore] = useState(0);
-  const [bPlayerScore, setBPlayerScore] = useState(0);
-  const [tieMatchNumber, setTieMatchNumber] = useState(0);
+  const [currentPlayer, setCurrentPlayer] = useState('X'); // the Player who takes the actual turn
+  const [boardCells, setBoardCells] = useState(Array(9).fill(null)); // Actual Board
+  const [isWinner, setIsWinner] = useState(false); // Conditional if there is a winner or no
+  const [userName, setUserName] = useState(''); // The username got from Register.jsx
+  const [aPlayerMarker, setAPlayerMarker] = useState('O'); // The selected marker from markerSwitcher.jsx
+  const [aPlayerScore, setAplayerScore] = useState(0); // First player score
+  const [bPlayerScore, setBPlayerScore] = useState(0); // Second Player score
+  const [tieMatchNumber, setTieMatchNumber] = useState(0); // Tie match score
 
   return (
     <GameContext.Provider
