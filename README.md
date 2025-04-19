@@ -10,23 +10,16 @@ This is a simple **Tic Tac Toe game** built with React and Vite. The project is 
 
 - ✅ Planning :)
 - ✅ 3x3 game board with live updates
-- ⏳ Player vs CPU mode with alternating turns
+- ✅ Player vs CPU mode with alternating turns
 - ⏳ Player vs Player mode (coming soon)
 - ✅ Displays the current player's turn
-- ⏳ Win/lose/tie detection
+- ✅ Win/lose/tie detection
 - ✅ Restart button with confirmation modal
 - ✅ End-game modal for win/lose/tie
-- ⏳ Counters for wins (X and O) and total ties
+- ✅ Counters for wins (X and O) and total ties
 - ✅ Blocks clicks on filled cells or after game ends
-- ⏳ CPU move delay using `setTimeout`
+- ✅ CPU move delay using `setTimeout`
 - ✅ Register form with basic input validation (in progress)
-
-## 🧠 Technical Tips Implemented
-
-- Game board state stored in an array (1D or 2D)
-- Function to check win conditions using index patterns
-- Current player state that toggles after valid moves
-- `isGameOver` flag to disable interaction when needed
 
 ## 🛠 Tech Stack
 

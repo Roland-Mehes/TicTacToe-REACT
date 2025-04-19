@@ -9,9 +9,10 @@ export const GameProvider = ({ children }) => {
   const [isWinner, setIsWinner] = useState(false); // Conditional if there is a winner or no
   const [userName, setUserName] = useState(''); // The username got from Register.jsx
   const [aPlayerMarker, setAPlayerMarker] = useState('O'); // The selected marker from markerSwitcher.jsx
-  const [aPlayerScore, setAplayerScore] = useState(0); // First player score
+  const [aPlayerScore, setAPlayerScore] = useState(0); // First player score
   const [bPlayerScore, setBPlayerScore] = useState(0); // Second Player score
   const [tieMatchNumber, setTieMatchNumber] = useState(0); // Tie match score
+  const [gameMode, setGameMode] = useState('cpu'); // Tie match score
 
   return (
     <GameContext.Provider
@@ -27,11 +28,13 @@ export const GameProvider = ({ children }) => {
         aPlayerMarker,
         setAPlayerMarker,
         aPlayerScore,
-        setAplayerScore,
+        setAPlayerScore,
         bPlayerScore,
         setBPlayerScore,
         tieMatchNumber,
         setTieMatchNumber,
+        gameMode,
+        setGameMode,
       }}
     >
       {children}

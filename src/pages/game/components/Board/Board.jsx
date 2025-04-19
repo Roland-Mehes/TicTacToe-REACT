@@ -5,12 +5,15 @@ import XHover from '../../../../assets/XHover';
 import OHover from '../../../../assets/OHover';
 import { useGameContext } from '../../../../Context/GameContext';
 import { useEffect, useState } from 'react';
-import { winningCombinations } from '../../utils/winningCombinations';
+import { computerMove } from '../../utils/computerMove';
+import { checkGameState } from '../../utils/checkGameState';
 
-// currentPlayer = the player who has to place marker
-
+// Main board component
 const Board = ({ setIsModalOpen }) => {
-  const [hoverIndex, setHoverIndex] = useState(null);
+  const [hoverIndex, setHoverIndex] = useState(null); // Track which cell is hovered
+  const [isBoardLocked, setIsBoardLocked] = useState(false); // Prevent interaction during AI move
+
+  // Get all necessary states and setters from GameContext
   const {
     boardCells,
     setBoardCells,
@@ -19,68 +22,86 @@ const Board = ({ setIsModalOpen }) => {
     isWinner,
     setIsWinner,
     aPlayerMarker,
+    gameMode,
+    setAPlayerScore,
+    setBPlayerScore,
+    setTieMatchNumber,
   } = useGameContext();
 
-  // WIN CONDITION CHECK
+  // Check for win/tie condition after every board update
   useEffect(() => {
-    for (let combo of winningCombinations) {
-      const [a, b, c] = combo;
-      if (
-        boardCells[a] &&
-        boardCells[a] === boardCells[b] &&
-        boardCells[a] === boardCells[c]
-      ) {
-        // IF THERE IS A WINNER
-        let winner = boardCells[a];
-        setIsWinner(winner);
+    checkGameState(
+      boardCells,
+      aPlayerMarker,
+      setIsWinner,
+      setIsModalOpen,
+      setAPlayerScore,
+      setBPlayerScore,
+      setTieMatchNumber
+    );
 
-        // Check if the winner is the same as the player's marker
-        if (winner === aPlayerMarker) {
-          setIsModalOpen('win'); // Player wins
-        } else {
-          setIsModalOpen('lose'); // Player loses
-        }
-      }
-    }
-    // If there is no winner. (#TIE)
-    if (boardCells.every((cell) => cell !== null)) {
-      setIsModalOpen('tie');
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [boardCells, aPlayerMarker, setIsWinner]);
+  }, [boardCells]);
 
-  // BOARD CONTROLS
-  const handleClick = (e) => {
+  // AI (CPU) makes a move automatically if it's their turn
+  useEffect(() => {
+    const isBoardEmpty = boardCells.every((cell) => cell === null); // Check if it's the first move
+    const isComputerTurn = currentPlayer !== aPlayerMarker; // True if it's CPU's turn
+    const isCpuGame = gameMode === 'cpu'; // Confirm we are in CPU game mode
+
+    // CPU plays if it's their turn and game is still going
+    if (isCpuGame && !isWinner && isComputerTurn) {
+      setIsBoardLocked(true); // Lock player input during CPU move
+      const delay = isBoardEmpty ? 500 : 400; // First move has slightly more delay
+      const timer = setTimeout(() => {
+        computerMove(
+          boardCells,
+          currentPlayer,
+          setBoardCells,
+          setCurrentPlayer
+        );
+        setIsBoardLocked(false); // Unlock player input after CPU move
+      }, delay);
+
+      // Clear timeout if component unmounts
+      return () => clearTimeout(timer);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boardCells, currentPlayer, gameMode, aPlayerMarker, isWinner]);
+
+  // Handle user clicking on a cell
+  const handleClick = (index) => {
+    // Don't allow move if someone won, the board is locked, or cell already taken
+    if (isWinner || boardCells[index] !== null || isBoardLocked) return;
+
     const newBoard = [...boardCells];
+    newBoard[index] = currentPlayer;
 
-    // If there is a winner or the board has already an X or O do nothing
-    if (isWinner || boardCells[e] !== null) return;
-
-    // Adding content in cells basaed on currentPlayer
-    newBoard[e] = currentPlayer;
-    setBoardCells(newBoard);
-    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+    setBoardCells(newBoard); // Update board
+    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X'); // Toggle turn
   };
 
   return (
     <div className={styles.cellContainer}>
       {boardCells.map((cell, idx) => (
         <div
-          onClick={() => handleClick(idx)}
+          onClick={() => handleClick(idx)} // Handle cell click
           className={styles.cell}
           key={idx}
-          onMouseEnter={() => setHoverIndex(idx)}
+          onMouseEnter={() => setHoverIndex(idx)} // Track hover for UI
           onMouseLeave={() => setHoverIndex(null)}
         >
+          {/* Render X, O, or Hover effect depending on cell state */}
           {cell === 'X' ? (
             <X width={'79px'} height={'79px'} fill={'#008AFF'} />
           ) : cell === 'O' ? (
             <O width={'79px'} height={'79px'} fill={'#FFAA00'} />
           ) : hoverIndex === idx ? (
             currentPlayer === 'X' ? (
-              <XHover></XHover>
+              <XHover />
             ) : (
-              <OHover></OHover>
+              <OHover />
             )
           ) : null}
         </div>
