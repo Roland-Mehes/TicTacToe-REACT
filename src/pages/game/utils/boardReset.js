@@ -1,1 +1,1 @@
-export const boardReset = () => Array(9).fill(null);
+export const BoardReset = () => Array(9).fill(null);
