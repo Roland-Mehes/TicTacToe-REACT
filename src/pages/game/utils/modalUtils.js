@@ -26,7 +26,7 @@ export const GetModalContent = (modalType) => {
         confirmText: 'NEXT ROUND',
         cancelText: 'QUIT',
       };
-    case 'draw':
+    case 'tie':
       return {
         title: 'NOBODY WON!',
         subtitle: 'ROUND TIED',

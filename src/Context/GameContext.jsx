@@ -4,7 +4,7 @@ const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
   // I Could make here an Object inside one useState to prevent duplication , but i will imporive it later. Now its better for me to debug :)
-  const [currentPlayer, setCurrentPlayer] = useState('X'); // the Player who takes the actual turn
+  const [currentPlayer, setCurrentPlayer] = useState('X'); // the Player who takes the actual turn , X Goes allways 1st.
   const [boardCells, setBoardCells] = useState(Array(9).fill(null)); // Actual Board
   const [isWinner, setIsWinner] = useState(false); // Conditional if there is a winner or no
   const [userName, setUserName] = useState(''); // The username got from Register.jsx

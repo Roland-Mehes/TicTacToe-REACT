@@ -1,13 +1,16 @@
 import styles from './board.module.css';
 import X from '../../../../assets/X';
 import O from '../../../../assets/O';
+import XHover from '../../../../assets/XHover';
+import OHover from '../../../../assets/OHover';
 import { useGameContext } from '../../../../Context/GameContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { winningCombinations } from '../../utils/winningCombinations';
 
 // currentPlayer = the player who has to place marker
 
 const Board = ({ setIsModalOpen }) => {
+  const [hoverIndex, setHoverIndex] = useState(null);
   const {
     boardCells,
     setBoardCells,
@@ -39,7 +42,10 @@ const Board = ({ setIsModalOpen }) => {
         }
       }
     }
-    console.log('The Player Marker is : ', aPlayerMarker);
+    // If there is no winner. (#TIE)
+    if (boardCells.every((cell) => cell !== null)) {
+      setIsModalOpen('tie');
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boardCells, aPlayerMarker, setIsWinner]);
 
@@ -59,11 +65,23 @@ const Board = ({ setIsModalOpen }) => {
   return (
     <div className={styles.cellContainer}>
       {boardCells.map((cell, idx) => (
-        <div onClick={() => handleClick(idx)} className={styles.cell} key={idx}>
+        <div
+          onClick={() => handleClick(idx)}
+          className={styles.cell}
+          key={idx}
+          onMouseEnter={() => setHoverIndex(idx)}
+          onMouseLeave={() => setHoverIndex(null)}
+        >
           {cell === 'X' ? (
             <X width={'79px'} height={'79px'} fill={'#008AFF'} />
           ) : cell === 'O' ? (
             <O width={'79px'} height={'79px'} fill={'#FFAA00'} />
+          ) : hoverIndex === idx ? (
+            currentPlayer === 'X' ? (
+              <XHover></XHover>
+            ) : (
+              <OHover></OHover>
+            )
           ) : null}
         </div>
       ))}

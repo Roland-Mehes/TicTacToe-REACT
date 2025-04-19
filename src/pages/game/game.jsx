@@ -4,18 +4,19 @@ import Board from './components/Board/Board';
 import GameHeader from './components/Header/gameHeader';
 import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
-import { boardReset } from './utils/boardReset';
+import { BoardReset } from './utils/boardReset';
 import { useGameContext } from '../../Context/GameContext';
 import { GetModalContent } from './utils/modalUtils';
 
 const Game = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { setBoardCells, setIsWinner } = useGameContext();
+  const { setBoardCells, setIsWinner, setCurrentPlayer } = useGameContext();
   const [modalType, setModalType] = useState('win');
 
   const handleOnConfirm = () => {
-    setBoardCells(boardReset);
+    setBoardCells(BoardReset);
     setIsWinner(false);
+    setCurrentPlayer('X');
     setIsModalOpen(false);
   };
 
