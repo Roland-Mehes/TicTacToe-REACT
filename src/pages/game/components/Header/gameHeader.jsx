@@ -1,10 +1,17 @@
-import React from 'react';
+// import React, { useState } from 'react';
 import X from '../../../../assets/X';
 import O from '../../../../assets/O';
 import Restart from '../../../../assets/Restart';
 import styles from './gameHeader.module.css';
+import { useGameContext } from '../../../../Context/GameContext';
 
-const GameHeader = () => {
+const GameHeader = ({ setIsModalOpen }) => {
+  const { currentPlayer } = useGameContext();
+
+  const handleOnClick = () => {
+    setIsModalOpen('restart');
+  };
+
   return (
     <div className={styles.mainContainer}>
       <div>
@@ -13,10 +20,15 @@ const GameHeader = () => {
       </div>
 
       <div className={styles.scoreDisplay}>
-        <X width={'20px'} height={'20px'} /> <h3>TURN</h3>
+        {currentPlayer === 'X' ? (
+          <X width={'20px'} height={'20px'} />
+        ) : (
+          <O width={'20px'} height={'20px'} />
+        )}
+        <h3>TURN</h3>
       </div>
 
-      <div className={styles.restartContainer}>
+      <div className={styles.restartContainer} onClick={handleOnClick}>
         <Restart width={'20px'} height={'20px'} fill={'#0e2c42'} />
       </div>
     </div>
