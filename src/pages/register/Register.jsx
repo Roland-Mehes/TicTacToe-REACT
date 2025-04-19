@@ -10,10 +10,6 @@ const Register = () => {
   const { userName, setUserName } = useGameContext();
   const navigate = useNavigate();
 
-  const handleUserNameChange = (name) => {
-    setUserName(name);
-  };
-
   const handleSubmit = () => {
     if (!userName) {
       return null;
@@ -27,7 +23,7 @@ const Register = () => {
       <XOLogo></XOLogo>
       <CustomForm
         userName={userName}
-        onUserNameChange={handleUserNameChange}
+        onUserNameChange={(name) => setUserName(name)}
         onSubmit={handleSubmit}
       ></CustomForm>
 

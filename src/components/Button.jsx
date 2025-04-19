@@ -13,7 +13,7 @@ const Button = ({ children, onClick, modalButton, quitModalButton }) => {
   }
 
   return (
-    <button onClick={onClick} className={buttonClass}>
+    <button type="button" onClick={onClick} className={buttonClass}>
       {children}
     </button>
   );

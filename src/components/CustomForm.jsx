@@ -19,6 +19,7 @@ const CustomForm = ({ userName, onUserNameChange, onSubmit }) => {
           value={userName || ''}
           onChange={(e) => onUserNameChange(e.target.value)}
           onKeyDown={handleKeyDown}
+          required={true}
         />
       </form>
     </div>
