@@ -70,6 +70,12 @@ const Board = ({ setIsModalOpen }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boardCells, currentPlayer, gameMode, aPlayerMarker, isWinner]);
 
+  useEffect(() => {
+    if (boardCells.every((cell) => cell === null)) {
+      setIsBoardLocked(false);
+    }
+  }, [boardCells]);
+
   // Handle user clicking on a cell
   const handleClick = (index) => {
     // Don't allow move if someone won, the board is locked, or cell already taken
