@@ -13,8 +13,8 @@
   display: grid;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 5px 0 0 var(--third-bg-color);
   font-family: var(--ff-main);
+  border-bottom: 5px solid var(--third-bg-color);
 }
 
 .customButton:hover {
