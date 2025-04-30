@@ -7,17 +7,22 @@ import Modal from './components/Modal/Modal';
 import { BoardReset } from './utils/boardReset';
 import { useGameContext } from '../../Context/GameContext';
 import { GetModalContent } from './utils/modalUtils';
+import { useNavigate } from 'react-router-dom';
 
 const Game = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { setBoardCells, setIsWinner, setCurrentPlayer } = useGameContext();
   const [modalType, setModalType] = useState('win');
+  const navigate = useNavigate();
 
   const handleOnConfirm = () => {
     setBoardCells(BoardReset);
     setIsWinner(false);
     setCurrentPlayer('X');
     setIsModalOpen(false);
+    if (modalType === 'restart') {
+      navigate('/gameMenu');
+    }
   };
 
   const openModal = (type) => {
