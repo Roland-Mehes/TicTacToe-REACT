@@ -5,8 +5,10 @@ import XHover from '../../../../assets/XHover';
 import OHover from '../../../../assets/OHover';
 import { useGameContext } from '../../../../Context/GameContext';
 import { useEffect, useState } from 'react';
-import { computerMove } from '../../utils/computerMove';
 import { checkGameState } from '../../utils/checkGameState';
+import { computerMoveEasy } from '../../utils/computerMoveEasy';
+import { computerMoveMedium } from '../../utils/computerMoveMedium';
+import { computerMoveHard } from '../../utils/computerMoveHard';
 
 // Main board component
 const Board = ({ setIsModalOpen }) => {
@@ -47,19 +49,40 @@ const Board = ({ setIsModalOpen }) => {
   useEffect(() => {
     const isBoardEmpty = boardCells.every((cell) => cell === null); // Check if it's the first move
     const isComputerTurn = currentPlayer !== aPlayerMarker; // True if it's CPU's turn
-    const isCpuGame = gameMode === 'cpu'; // Confirm we are in CPU game mode
+    const isCpuGame =
+      gameMode.CPU_easy || gameMode.CPU_medium || gameMode.CPU_hard; // Confirm we are in CPU game mode
 
     // CPU plays if it's their turn and game is still going
     if (isCpuGame && !isWinner && isComputerTurn) {
       setIsBoardLocked(true); // Lock player input during CPU move
       const delay = isBoardEmpty ? 500 : 400; // First move has slightly more delay
       const timer = setTimeout(() => {
-        computerMove(
-          boardCells,
-          currentPlayer,
-          setBoardCells,
-          setCurrentPlayer
-        );
+        if (gameMode.CPU_easy) {
+          // Random move for easy mode
+          computerMoveEasy(
+            boardCells,
+            currentPlayer,
+            setBoardCells,
+            setCurrentPlayer
+          );
+        } else if (gameMode.CPU_medium) {
+          // Smarter move for medium mode (eg. block or win)
+          computerMoveMedium(
+            boardCells,
+            currentPlayer,
+            setBoardCells,
+            setCurrentPlayer
+          );
+        } else if (gameMode.CPU_hard) {
+          // MiniMax algorithm for hard mode (optimal play)
+          computerMoveHard(
+            boardCells,
+            currentPlayer,
+            setBoardCells,
+            setCurrentPlayer
+          );
+        }
+
         setIsBoardLocked(false); // Unlock player input after CPU move
       }, delay);
 

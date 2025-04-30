@@ -1,4 +1,4 @@
-export const computerMove = (
+export const computerMoveEasy = (
   board,
   computerMarker,
   setBoardCells,

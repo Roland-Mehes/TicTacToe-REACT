@@ -12,8 +12,11 @@ export const GameProvider = ({ children }) => {
   const [aPlayerScore, setAPlayerScore] = useState(0); // First player score
   const [bPlayerScore, setBPlayerScore] = useState(0); // Second Player score
   const [tieMatchNumber, setTieMatchNumber] = useState(0); // Tie match score
-  const [gameMode, setGameMode] = useState('cpu'); // Tie match score
-
+  const [gameMode, setGameMode] = useState({
+    CPU_easy: false,
+    CPU_medium: false,
+    CPU_hard: false,
+  });
   return (
     <GameContext.Provider
       value={{
